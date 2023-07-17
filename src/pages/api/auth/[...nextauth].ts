@@ -3,4 +3,4 @@
 
 // export default NextAuth(authOptions);
 
-export {}
+export {};
