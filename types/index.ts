@@ -1,3 +1,5 @@
+import React, { ReactNode } from "react";
+
 import type { ImageProps } from "next/image";
 
 export interface IAvatar extends ImageProps {
@@ -10,6 +12,14 @@ export interface IEditorTab {
   iconProps?: { color: string; size: number };
   name: string;
   path: string;
+}
+
+export interface IOpenTagToUI {
+  name: string;
+  bracketSize: number;
+  size: number;
+  children: ReactNode;
+  color: string;
 }
 
 export interface ISideNavItem {

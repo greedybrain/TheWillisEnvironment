@@ -27,6 +27,9 @@ const useEditorUpdater = () => {
       case "/":
         handleAddEditor("READ.me");
         break;
+      case "/skills":
+        handleAddEditor("Skills");
+        break;
     }
   }, [handleAddEditor, pathname]);
 };

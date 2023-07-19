@@ -4,6 +4,9 @@ import { Resizable } from "re-resizable";
 import SidePanelTabs from "../SidePanelTabs";
 import sidePanelStyles from "../../../styles/SidePanel.module.css";
 
+const MIN_WIDTH = 250;
+const MAX_WIDTH = 600;
+
 const SidePanel = () => {
   const [isResizing, setIsResizing] = useState(false);
 
@@ -13,8 +16,8 @@ const SidePanel = () => {
   return (
     <Resizable
       className={`relative overflow-hidden bg-[#252526]`}
-      minWidth={250}
-      maxWidth={600}
+      minWidth={MIN_WIDTH}
+      maxWidth={MAX_WIDTH}
       onResizeStart={handleResizeStart}
       onResizeStop={handleResizeStop}
       enable={{

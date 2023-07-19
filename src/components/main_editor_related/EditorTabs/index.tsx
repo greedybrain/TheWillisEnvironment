@@ -1,39 +1,25 @@
-import { DndContext, closestCenter } from "@dnd-kit/core";
-import {
-  SortableContext,
-  horizontalListSortingStrategy,
-} from "@dnd-kit/sortable";
-
 import EditorTab from "../EditorTab";
 import React from "react";
-import handleDragEnd from "~/lib/handleDragEnd";
+import removeDuplicates from "~/lib/removeDuplicates";
 import useStore from "~/hooks/useStore";
 
 const EditorTabs = () => {
-  const { openEditors, setOpenEditors } = useStore((state) => state);
+  const { openEditors } = useStore((state) => ({
+    openEditors: state.openEditors,
+  }));
 
-  const editors = Array.from([...new Set(openEditors)]);
+  const editors = removeDuplicates(openEditors);
 
   return (
-    <DndContext
-      collisionDetection={closestCenter}
-      onDragEnd={(event) => handleDragEnd(event, editors, setOpenEditors)}
+    <ul
+      className={`flex overflow-x-scroll bg-[#252526] ${
+        openEditors.length === 5 ? "scrollbar-thin" : ""
+      } lg:scrollbar-none`}
     >
-      <ul
-        className={`flex overflow-x-scroll bg-[#252526] ${
-          openEditors.length === 5 ? "scrollbar-thin" : ""
-        } lg:scrollbar-none`}
-      >
-        <SortableContext
-          items={editors}
-          strategy={horizontalListSortingStrategy}
-        >
-          {editors.map((tab) => (
-            <EditorTab key={tab.id} {...tab} />
-          ))}
-        </SortableContext>
-      </ul>
-    </DndContext>
+      {editors.map((tab) => (
+        <EditorTab key={tab.id} {...tab} />
+      ))}
+    </ul>
   );
 };
 

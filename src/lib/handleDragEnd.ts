@@ -1,22 +1,28 @@
-import type { DragEndEvent } from "@dnd-kit/core";
-import type { IEditorTab } from "types";
-import { arrayMove } from "@dnd-kit/sortable";
+// import type { IEditorTab } from "types";
 
-const handleDragEnd = (
-  event: DragEndEvent,
-  editors: IEditorTab[],
-  setOpenEditors: (editors: IEditorTab[]) => void
-) => {
-  const { active, over } = event;
+// const handleDragEnd = (
+//   event: DragEndEvent,
+//   editors: IEditorTab[],
+//   setOpenEditors: (editors: IEditorTab[]) => void
+// ) => {
+//   const { active, over } = event;
 
-  if (active.id === over?.id) return;
+//   if (active.id === over?.id) return;
 
-  const activeIndex = editors.findIndex((editor) => editor.id === active.id);
-  const overIndex = editors.findIndex((editor) => editor.id === over?.id);
+//   const activeIndex = editors.findIndex(
+//     (editor) => editor.id === Number(active.id)
+//   );
+//   const overIndex = editors.findIndex(
+//     (editor) => editor.id === Number(over?.id)
+//   );
 
-  const modArray = arrayMove(editors, activeIndex, overIndex);
+//   if (activeIndex === -1 || overIndex === -1) return;
 
-  setOpenEditors(modArray);
-};
+//   const modArray = arrayMove(editors, activeIndex, overIndex);
 
-export default handleDragEnd;
+//   setOpenEditors(modArray);
+// };
+
+// export default handleDragEnd;
+
+export {};
