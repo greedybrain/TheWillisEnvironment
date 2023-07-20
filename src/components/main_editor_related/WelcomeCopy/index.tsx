@@ -1,5 +1,4 @@
 import Avatar from "~/common/Avatar";
-import MainNavItems from "../MainNavItems";
 import React from "react";
 import TagSimulation from "~/common/TagSimulation";
 import willis_avatar from "public/assets/willis-in-black-and-white.jpeg";
@@ -80,10 +79,6 @@ const WelcomeCopy = () => {
             isClose
           />
         </div>
-      </div>
-      <div className={`border-l border-l-[#3e3e3e] px-6`}>
-        <h3 className={`mb-4 mt-12 text-2xl text-[#CCCCCC]`}>Start</h3>
-        <MainNavItems />
       </div>
     </div>
   );

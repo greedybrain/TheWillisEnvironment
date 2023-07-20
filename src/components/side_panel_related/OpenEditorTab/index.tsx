@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import type { IEditorTab } from "types";
+import Link from "next/link";
 import { VscClose } from "react-icons/vsc";
 import { useRouter } from "next/router";
 import useStore from "~/hooks/useStore";
@@ -61,14 +62,16 @@ const OpenEditorTab: React.FC<IEditorTab> = (editor) => {
             }
           }}
         />
-        <Icon {...newIconProps} />
-        <span
-          className={`text-lg ${
-            pathname === path ? "text-[#CBA700]" : "text-[#74C992]"
-          }`}
-        >
-          {`${name}`}
-        </span>
+        <Link href={path} className={`flex items-center gap-2`}>
+          <Icon {...newIconProps} />
+          <span
+            className={`text-lg ${
+              pathname === path ? "text-[#CBA700]" : "text-[#74C992]"
+            }`}
+          >
+            {`${name}`}
+          </span>
+        </Link>
       </div>
     </li>
   );

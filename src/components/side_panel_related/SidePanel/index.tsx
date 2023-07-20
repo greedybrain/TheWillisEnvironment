@@ -5,7 +5,7 @@ import SidePanelTabs from "../SidePanelTabs";
 import sidePanelStyles from "../../../styles/SidePanel.module.css";
 
 const MIN_WIDTH = 250;
-const MAX_WIDTH = 600;
+const MAX_WIDTH = 400;
 
 const SidePanel = () => {
   const [isResizing, setIsResizing] = useState(false);
