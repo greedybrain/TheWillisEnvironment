@@ -1,12 +1,11 @@
 import type { IEditorTab } from "types";
-import Link from "next/link";
 import React from "react";
 import { VscClose } from "react-icons/vsc";
 import { useRouter } from "next/router";
 import useStore from "~/hooks/useStore";
 
 const EditorTab: React.FC<IEditorTab> = (editor) => {
-  const { Icon, name, iconProps, path } = editor;
+  const { Icon, name, iconProps } = editor;
 
   const { setActiveEditorTab, removeEditor } = useStore((state) => ({
     setActiveEditorTab: state.setActiveEditorTab,
@@ -33,13 +32,13 @@ const EditorTab: React.FC<IEditorTab> = (editor) => {
           backgroundColor: activeEditorTab === name ? "#1E1E1E" : "#2D2D2D",
         }}
       >
-        <Link href={path} className={`flex items-center gap-3`}>
+        <div className={`flex items-center gap-3`}>
           <Icon {...iconProps} className="h-full" />
           <p className={`h-full select-none py-2 text-lg`}>
             {name}
             {name !== "READ.me" && ".me"}
           </p>
-        </Link>
+        </div>
         <VscClose
           className={`mr-3 rounded-md p-[2px] hover:bg-[#2d2d2d]`}
           size={30}

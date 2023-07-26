@@ -1,5 +1,6 @@
 import type { IEditorTab } from "types";
 import { create } from "zustand";
+import editorTabs from "data/editorTabs";
 
 interface StoreState {
   activeSideNavItem: string;
@@ -20,7 +21,7 @@ interface StoreActions {
 const useStore = create<StoreState & StoreActions>((set) => ({
   activeSideNavItem: "Home",
   activeEditorTab: "READ.me",
-  openEditors: [],
+  openEditors: editorTabs,
   setActiveNavItem: (activeSideNavItem) => set(() => ({ activeSideNavItem })),
   setActiveEditorTab: (activeEditorTab) => set(() => ({ activeEditorTab })),
   addEditor: (editor) =>

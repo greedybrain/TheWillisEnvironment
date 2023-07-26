@@ -5,8 +5,8 @@ import willis_avatar from "public/assets/willis-in-black-and-white.jpeg";
 
 const WelcomeCopy = () => {
   return (
-    <div className={`flex w-4/5 gap-20`}>
-      <div className={`ml-10 py-4`}>
+    <div className={`flex justify-center`}>
+      <div className={`ml-10 flex flex-col items-center  py-4`}>
         <Avatar
           src={willis_avatar}
           alt="Willis Avatar"

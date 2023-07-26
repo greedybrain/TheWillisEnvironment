@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 
 import type { IEditorTab } from "types";
-import Link from "next/link";
 import { VscClose } from "react-icons/vsc";
 import { useRouter } from "next/router";
 import useStore from "~/hooks/useStore";
 
 const OpenEditorTab: React.FC<IEditorTab> = (editor) => {
-  const { name, Icon, iconProps, path } = editor;
+  const { name, Icon, iconProps } = editor;
 
   const { setActiveEditorTab, removeEditor } = useStore((state) => ({
     setActiveEditorTab: state.setActiveEditorTab,
@@ -21,7 +20,7 @@ const OpenEditorTab: React.FC<IEditorTab> = (editor) => {
 
   const [showCloseButton, setShowCloseButton] = useState<boolean>(false);
 
-  const { pathname, push } = useRouter();
+  const { push } = useRouter();
 
   const newIconProps = Object.assign({}, iconProps, { size: 20 });
 
@@ -32,7 +31,7 @@ const OpenEditorTab: React.FC<IEditorTab> = (editor) => {
   return (
     <li>
       <div
-        className={`flex cursor-pointer items-center gap-2 py-[1px]  ${
+        className={`flex cursor-pointer items-center gap-2 py-1  ${
           activeEditorTab === name ? "bg-[#37373C]" : "hover:bg-[#4444444e] "
         }`}
         onMouseEnter={() => setShowCloseButton(true)}
@@ -62,16 +61,16 @@ const OpenEditorTab: React.FC<IEditorTab> = (editor) => {
             }
           }}
         />
-        <Link href={path} className={`flex items-center gap-2`}>
+        <div className={`flex items-center gap-2`}>
           <Icon {...newIconProps} />
           <span
             className={`text-lg ${
-              pathname === path ? "text-[#CBA700]" : "text-[#74C992]"
+              activeEditorTab === name ? "text-[#CBA700]" : "text-[#74C992]"
             }`}
           >
             {`${name}`}
           </span>
-        </Link>
+        </div>
       </div>
     </li>
   );

@@ -1,12 +1,16 @@
 import React from "react";
 import range from "~/lib/range";
 
-const LineCount = () => {
+interface ILineCount {
+  totalLines: number;
+}
+
+const LineCount: React.FC<ILineCount> = ({ totalLines }) => {
   return (
     <ul
-      className={`ml-6 flex max-h-[800px] min-w-[40px] flex-col overflow-hidden px-1 py-2`}
+      className={`ml-6 flex min-w-[40px]  flex-grow flex-col overflow-y-scroll px-1 py-2`}
     >
-      {range(1, 100).map((count) => (
+      {range(1, totalLines).map((count) => (
         <li key={count} className={`text-right font-semibold text-[#989898bc]`}>
           {count}
         </li>

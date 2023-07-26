@@ -6,7 +6,8 @@ import Header from "~/components/header_related/Header";
 import MainEditor from "~/components/main_editor_related/MainEditor";
 import SideNav from "~/components/sidenav_related/SideNav";
 import SidePanel from "~/components/side_panel_related/SidePanel";
-import { useRouter } from "next/router";
+
+import useStore from "~/hooks/useStore";
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   const [metadata, setMetadata] = useState<{
@@ -16,11 +17,10 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     title: "",
     description: "",
   });
-
-  const { pathname } = useRouter();
+  const activeEditorTab = useStore((state) => state.activeEditorTab);
 
   useEffect(() => {
-    switch (pathname) {
+    switch (activeEditorTab) {
       case "/":
         setMetadata({
           title: "TheWillisEnv | READ.me",
@@ -57,7 +57,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         });
         break;
     }
-  }, [pathname]);
+  }, [activeEditorTab]);
 
   return (
     <>
@@ -66,9 +66,9 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         <meta name="description" content={metadata.description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="main-custom flex min-h-screen flex-col p-8">
+      <main className="main-custom">
         <div
-          className={`flex w-[95%] min-w-[1200px] max-w-[1400px] flex-grow flex-col self-center drop-shadow-2xl`}
+          className={`flex min-h-screen flex-grow flex-col self-center drop-shadow-2xl`}
         >
           <Header />
           <div className={`flex flex-grow`}>

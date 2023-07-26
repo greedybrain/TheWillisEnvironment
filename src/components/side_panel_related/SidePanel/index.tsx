@@ -4,8 +4,8 @@ import { Resizable } from "re-resizable";
 import SidePanelTabs from "../SidePanelTabs";
 import sidePanelStyles from "../../../styles/SidePanel.module.css";
 
-const MIN_WIDTH = 250;
-const MAX_WIDTH = 400;
+const MIN_WIDTH = 400;
+const MAX_WIDTH = 600;
 
 const SidePanel = () => {
   const [isResizing, setIsResizing] = useState(false);
